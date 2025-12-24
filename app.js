@@ -123,6 +123,10 @@ app.use((req, res, next) => {
 //   res.send(newUser);
 // });
 
+// root route
+app.get("/",(req,res)=>{
+    res.redirect("/listings");
+})
 
 // new route
 app.get("/listings/new",isLoggedIn,(req,res)=>{
@@ -153,10 +157,7 @@ app.patch("/listings/:id",validateListing,isLoggedIn,isOwner,wrapAsync(listcontr
 
 app.delete("/listings/:id",isLoggedIn,isOwner,wrapAsync(listcontroller.deletelist));
 
-// root route
-// app.get("/",(req,res)=>{
-//     res.redirect("/listings");
-// })
+
 
 
 
@@ -223,6 +224,8 @@ app.get("/mybookings", isLoggedIn, wrapAsync(bookcontroller.mybook));
 
 // Cancel booking
 app.delete("/booking/:id", isLoggedIn,wrapAsync(bookcontroller.cancelbook));
+
+
 
 // 404 handler (no route matched)
 app.use((req, res, next) => {
