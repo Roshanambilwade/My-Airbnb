@@ -50,8 +50,8 @@
       <!-- RIGHT ACTIONS -->
       <ul class="navbar-nav align-items-center ms-auto gap-2">
 
-        <% if (curruser) { %>
-          <!-- My Bookings -->
+        <!-- My Bookings (only if logged in) -->
+        <% if (typeof curruser !== "undefined" && curruser) { %>
           <li class="nav-item">
             <a
               href="/mybookings"
@@ -72,7 +72,8 @@
           </a>
         </li>
 
-        <% if (!curruser) { %>
+        <!-- Signup / Login (only if NOT logged in) -->
+        <% if (typeof curruser === "undefined" || !curruser) { %>
           <li class="nav-item">
             <a href="/signup" class="btn btn-sm btn-outline-dark rounded-pill px-3">
               Sign up
@@ -85,7 +86,8 @@
           </li>
         <% } %>
 
-        <% if (curruser) { %>
+        <!-- Logout (only if logged in) -->
+        <% if (typeof curruser !== "undefined" && curruser) { %>
           <li class="nav-item">
             <a href="/logout" class="btn btn-sm btn-dark rounded-pill px-3">
               Logout
