@@ -1,0 +1,99 @@
+<nav class="navbar navbar-expand-md bg-white border-bottom sticky-top shadow-sm">
+  <div class="container-fluid">
+
+    <!-- LEFT: Brand -->
+    <a class="navbar-brand fw-bold" href="/listings">
+      <i class="fa-solid fa-compass me-1 text-primary"></i>
+      Wanderlust
+    </a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+      <!-- LEFT LINKS -->
+      <ul class="navbar-nav me-3">
+        <li class="nav-item">
+          <a class="nav-link fw-medium" href="/listings">Explore</a>
+        </li>
+      </ul>
+
+      <!-- CENTER SEARCH -->
+      <form
+        class="d-flex align-items-center mx-auto my-2 my-md-0"
+        action="/find"
+        method="post"
+        style="max-width: 420px; width: 100%;"
+      >
+        <input
+          class="form-control form-control-sm rounded-pill me-2"
+          type="text"
+          name="hotel"
+          placeholder="Search hotels..."
+          style="border: 1px solid #3687f7"
+        />
+        <button
+          class="btn btn-outline-primary btn-sm rounded-pill px-3"
+          type="submit"
+        >
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </form>
+
+      <!-- RIGHT ACTIONS -->
+      <ul class="navbar-nav align-items-center ms-auto gap-2">
+
+        <% if (curruser) { %>
+          <!-- My Bookings -->
+          <li class="nav-item">
+            <a
+              href="/mybookings"
+              class="btn btn-outline-primary btn-sm rounded-pill px-4 fw-medium"
+            >
+              My Bookings
+            </a>
+          </li>
+        <% } %>
+
+        <!-- Add Listing -->
+        <li class="nav-item">
+          <a
+            href="/listings/new"
+            class="btn btn-primary btn-sm rounded-pill px-4 fw-medium shadow-sm"
+          >
+            Add Listing
+          </a>
+        </li>
+
+        <% if (!curruser) { %>
+          <li class="nav-item">
+            <a href="/signup" class="btn btn-sm btn-outline-dark rounded-pill px-3">
+              Sign up
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/login" class="btn btn-sm btn-outline-dark rounded-pill px-3">
+              Login
+            </a>
+          </li>
+        <% } %>
+
+        <% if (curruser) { %>
+          <li class="nav-item">
+            <a href="/logout" class="btn btn-sm btn-dark rounded-pill px-3">
+              Logout
+            </a>
+          </li>
+        <% } %>
+
+      </ul>
+    </div>
+  </div>
+</nav>
